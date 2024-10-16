@@ -12,11 +12,11 @@ This manager plays audio samples imported into Godot divided into two categories
 
 Filenames are automatically polled and preloading is as easy as is playing audio files.
 ```
-AudioManager.load_effects("laser_sound")
+AudioManager.load_effects("laser_sound", false)
 AudioManager.play_effect("laser_sound")
 ```
 
-Simultaneous streams are handled up to a configurable `channelCount` in case you need to limit it for performance or clutter.
+Simultaneous streams are handled up to a configurable `channel_count` in case you need to limit it for performance or clutter.
 
 ## Setup
 1. Copy the audio folder to you project.
@@ -35,13 +35,13 @@ AudioManager.channelCount = 8
 2. Call any configuration of the load_...() functions to load only the needed audio samples.
 
 ```
-var effects = [
+var effects:Array[String] = [
   "blip",
   "confirmation",
   "laser"
 ]
-AudioManager.load_effects(effects)
-AudioManager.load_music(["bgm"])
+AudioManager.load_effects(effects, false)
+AudioManager.load_music("bgm")
 ```
 
 OR
@@ -57,7 +57,7 @@ AudioManager.load_all()
 3. Play audio from anywhere in your project using the audio name (filename without extensions).
 ```
 AudioManager.play_effect("blip")
-AudioManager.play_music("bgm")
+AudioManager.play_music("bgm", false)
 ```
 4. Deload resource references (for garbage collection) if needed (ex. switching scenes or whatnot).
 ```
